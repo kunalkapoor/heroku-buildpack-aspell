@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -e
+
+BUILD_DIR=$1
+CACHE_DIR={$2}/aspell
+
+mkdir -p $CACHE_DIR
+mkdir -p $BUILD_DIR/vendor
+mkdir -p $BUILD_DIR/vendor/aspell
+mkdir -p $BUILD_DIR/vendor/aspell/bin
+mkdir -p $BUILD_DIR/vendor/aspell/lib
+
+echo "-----> Install Aspell Debian package"
+ASPELL_URL="http://http.us.debian.org/debian/pool/main/a/aspell/aspell_0.60.6-4_amd64.deb"
+curl -L $ASPELL_URL -o ${CACHE_DIR}/aspell.deb
+dpkg -x ${CACHE_DIR}/aspell.deb ${CACHE_DIR}/aspell
+mv ${CACHE_DIR}/aspell/usr/bin/* ${BUILD_DIR}/vendor/aspell/bin
+
+echo "-----> Downloading aspell dependency"
+ASPELL_DEPENDENCY_URL="http://http.us.debian.org/debian/pool/main/a/aspell/libaspell15_0.60.6-4_amd64.deb"
+curl -L $ASPELL_DEPENDENCY_URL -o ${CACHE_DIR}/libaspell.deb
+dpkg -x ${CACHE_DIR}/libaspell.deb ${CACHE_DIR}/libaspell
+mkdir -p $BUILD_DIR/vendor/aspell/lib
+mv ${CACHE_DIR}/libaspell/usr/lib/* ${BUILD_DIR}/vendor/aspell/lib
+
+echo "-----> Downloading aspell English dictionaries"
+ASPELL_DICTIONARY_URL="ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2015.02.15-0.tar.bz2"
+curl -L $ASPELL_DICTIONARY_URL -o ${CACHE_DIR}/aspell6-en.tar.bz2
+tar -xjf ${CACHE_DIR}/aspell6-en.tar.bz2 -C ${CACHE_DIR}
+mv ${CACHE_DIR}/aspell6-en-2015.02.15-0/* ${BUILD_DIR}/vendor/aspell/lib/aspell
+
+chmod +x ${BUILD_DIR}/vendor/aspell/bin/*
+rm -rf ${CACHE_DIR}
+
+PROFILE_PATH="$BUILD_DIR/.profile.d/aspell.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:vendor/phantomjs/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/phantomjs/lib"' >> $PROFILE_PATH
+
+exit 0
