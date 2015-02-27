@@ -5,10 +5,6 @@ set -e
 BUILD_DIR=$1
 CACHE_DIR={$2}/aspell
 
-BUILD_DIR=/app
-CACHE_DIR=/tmp/aspell
-
-
 mkdir -p $CACHE_DIR
 mkdir -p $BUILD_DIR/vendor
 mkdir -p $BUILD_DIR/vendor/aspell
