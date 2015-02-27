@@ -11,14 +11,14 @@ mkdir -p $BUILD_DIR/vendor/aspell
 mkdir -p $BUILD_DIR/vendor/aspell/bin
 mkdir -p $BUILD_DIR/vendor/aspell/lib
 
-echo "-----> Install Aspell Debian package"
-ASPELL_URL="http://http.us.debian.org/debian/pool/main/a/aspell/aspell_0.60.6-4_amd64.deb"
+echo "-----> Install Aspell package"
+ASPELL_URL="http://mirrors.kernel.org/ubuntu/pool/main/a/aspell/aspell_0.60.7~20110707-1ubuntu1_amd64.deb"
 curl -L $ASPELL_URL -o ${CACHE_DIR}/aspell.deb
 dpkg -x ${CACHE_DIR}/aspell.deb ${CACHE_DIR}/aspell
 mv ${CACHE_DIR}/aspell/usr/bin/* ${BUILD_DIR}/vendor/aspell/bin
 
 echo "-----> Downloading aspell dependency"
-ASPELL_DEPENDENCY_URL="http://http.us.debian.org/debian/pool/main/a/aspell/libaspell15_0.60.6-4_amd64.deb"
+ASPELL_DEPENDENCY_URL="http://mirrors.kernel.org/ubuntu/pool/main/a/aspell/libaspell15_0.60.7~20110707-1ubuntu1_amd64.deb"
 curl -L $ASPELL_DEPENDENCY_URL -o ${CACHE_DIR}/libaspell.deb
 dpkg -x ${CACHE_DIR}/libaspell.deb ${CACHE_DIR}/libaspell
 mkdir -p $BUILD_DIR/vendor/aspell/lib
