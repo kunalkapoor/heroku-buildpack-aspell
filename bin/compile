@@ -21,7 +21,7 @@ rm -rf ${CACHE_DIR}
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/aspell.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:/app/vendor/aspell/bin"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:/app/vendor/aspell/bin:/app/vendor/aspell/lib"' >> $PROFILE_PATH
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/app/vendor/aspell/lib"' >> $PROFILE_PATH
 
 exit 0
