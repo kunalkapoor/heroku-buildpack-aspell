@@ -13,15 +13,15 @@ echo "-----> Install Aspell package"
 ASPELL_URL="https://github.com/Muscul/heroku-buildpack-aspell/raw/version_0.60.6/aspell-0.60.6.tar.gz"
 curl -L $ASPELL_URL -o ${CACHE_DIR}/aspell.tar.gz
 tar -xf ${CACHE_DIR}/aspell.tar.gz -C ${CACHE_DIR}
-mv ${CACHE_DIR}/aspell-0.60.6/* $BUILD_DIR/vendor/aspell
+#mv ${CACHE_DIR}/aspell-0.60.6/* $BUILD_DIR/vendor/aspell
 # move aspell via rsync
-#rsync -abv --remove-source-files ${CACHE_DIR}/aspell-0.60.6/* $BUILD_DIR/vendor/aspell
+rsync -abv --remove-source-files ${CACHE_DIR}/aspell-0.60.6/* $BUILD_DIR/vendor/aspell
 chmod +x ${BUILD_DIR}/vendor/aspell/bin/*
 rm -rf ${CACHE_DIR}
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/aspell.sh"
 mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:/app/vendor/aspell/bin:/app/vendor/aspell/lib"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/app/vendor/aspell/lib"' >> $PROFILE_PATH
+echo 'export PATH="$PATH:/app/vendor/aspell/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/aspell/lib"' >> $PROFILE_PATH
 
 exit 0
