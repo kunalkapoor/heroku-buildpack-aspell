@@ -65,4 +65,6 @@ cd $BUILD_DIR/vendor/aspell-el && ./configure
 make -C $BUILD_DIR/vendor/aspell-el
 make install -C $BUILD_DIR/vendor/aspell-el
 
+echo "-----> Dictionaries installed"
+ls -l $BUILD_DIR/vendor/aspell/lib
 exit 0
