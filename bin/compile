@@ -16,9 +16,9 @@ tar -xf $CACHE_DIR/aspell.tar.gz -C $CACHE_DIR
 echo "-----> CACHE_DIR: $CACHE_DIR"
 mv $CACHE_DIR/aspell-0.60.6.1/* $BUILD_DIR/vendor/aspell
 echo "-----> BUILD_DIR: $BUILD_DIR/vendor/aspell"
-$BUILD_DIR/vendor/aspell/configure
+chmod -R +rwx $BUILD_DIR/vendor/aspell
+cd $BUILD_DIR/vendor/aspell && configure
 echo "-----> Running make"
-ls $BUILD_DIR/vendor/aspell/Make*
 make -C $BUILD_DIR/vendor/aspell
 make install -C $BUILD_DIR/vendor/aspell
 # chmod +x ${BUILD_DIR}/vendor/aspell/bin/*
