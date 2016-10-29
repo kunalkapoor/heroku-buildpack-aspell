@@ -42,6 +42,8 @@ mkdir -p $BUILD_DIR/vendor/aspell-en
 mv $CACHE_DIR/aspell6-en-2016.06.26-0/* $BUILD_DIR/vendor/aspell-en
 chmod -R +rwx $BUILD_DIR/vendor/aspell-en/
 $BUILD_DIR/vendor/aspell-en/configure
+echo "-----> Making dictionary"
+ls -l $BUILD_DIR/vendor/aspell-en
 make -C $BUILD_DIR/vendor/aspell-en
 make install -C $BUILD_DIR/vendor/aspell-en
 
