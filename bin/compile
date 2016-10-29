@@ -41,9 +41,7 @@ tar -xf $CACHE_DIR/dict-en.tar.gz -C $CACHE_DIR
 mkdir -p $BUILD_DIR/vendor/aspell-en
 mv $CACHE_DIR/aspell6-en-2016.06.26-0/* $BUILD_DIR/vendor/aspell-en
 chmod -R +rwx $BUILD_DIR/vendor/aspell-en/
-$BUILD_DIR/vendor/aspell-en/configure
-echo "-----> Making dictionary"
-ls -l $BUILD_DIR/vendor/aspell-en
+cd $BUILD_DIR/vendor/aspell-en && ./configure
 make -C $BUILD_DIR/vendor/aspell-en
 make install -C $BUILD_DIR/vendor/aspell-en
 
@@ -53,7 +51,7 @@ tar -xf $CACHE_DIR/dict-nl.tar.gz -C $CACHE_DIR
 mkdir -p $BUILD_DIR/vendor/aspell-nl
 mv $CACHE_DIR/aspell-nl-0.50-2/* $BUILD_DIR/vendor/aspell-nl
 chmod -R +rwx $BUILD_DIR/vendor/aspell-nl
-$BUILD_DIR/vendor/aspell-nl/configure
+cd $BUILD_DIR/vendor/aspell-nl && ./configure
 make -C $BUILD_DIR/vendor/aspell-nl
 make install -C $BUILD_DIR/vendor/aspell-nl
 
@@ -63,7 +61,7 @@ tar -xf $CACHE_DIR/dict-el.tar.gz -C $CACHE_DIR
 mkdir -p $BUILD_DIR/vendor/aspell-el
 mv $CACHE_DIR/aspell-el-0.50-3/* $BUILD_DIR/vendor/aspell-el
 chmod -R +rwx $BUILD_DIR/vendor/aspell-el
-$BUILD_DIR/vendor/aspell-el/configure
+cd $BUILD_DIR/vendor/aspell-el && ./configure
 make -C $BUILD_DIR/vendor/aspell-el
 make install -C $BUILD_DIR/vendor/aspell-el
 
