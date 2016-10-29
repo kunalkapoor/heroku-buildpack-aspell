@@ -2,24 +2,28 @@
 
 set -e
 
-BUILD_DIR=$1
-CACHE_DIR={$2}/aspell
+apt-get install aspell
+apt-get install aspell-en
+apt-get install aspell-nl
+apt-get install aspell-el
+# BUILD_DIR=$1
+# CACHE_DIR={$2}/aspell
 
-mkdir -p $CACHE_DIR
-mkdir -p $BUILD_DIR/vendor
-mkdir -p $BUILD_DIR/vendor/aspell
+# mkdir -p $CACHE_DIR
+# mkdir -p $BUILD_DIR/vendor
+# mkdir -p $BUILD_DIR/vendor/aspell
 
-echo "-----> Install Aspell package"
-ASPELL_URL="https://github.com/Muscul/heroku-buildpack-aspell/raw/version_0.60.6/aspell-0.60.6.tar.gz"
-curl -L $ASPELL_URL -o ${CACHE_DIR}/aspell.tar.gz
-tar -xf ${CACHE_DIR}/aspell.tar.gz -C ${CACHE_DIR}
-mv ${CACHE_DIR}/aspell-0.60.6/* $BUILD_DIR/vendor/aspell
-chmod +x ${BUILD_DIR}/vendor/aspell/bin/*
-rm -rf ${CACHE_DIR}
+# echo "-----> Install Aspell package"
+# ASPELL_URL="https://github.com/Muscul/heroku-buildpack-aspell/raw/version_0.60.6/aspell-0.60.6.tar.gz"
+# curl -L $ASPELL_URL -o ${CACHE_DIR}/aspell.tar.gz
+# tar -xf ${CACHE_DIR}/aspell.tar.gz -C ${CACHE_DIR}
+# mv ${CACHE_DIR}/aspell-0.60.6/* $BUILD_DIR/vendor/aspell
+# chmod +x ${BUILD_DIR}/vendor/aspell/bin/*
+# rm -rf ${CACHE_DIR}
 
-PROFILE_PATH="$BUILD_DIR/.profile.d/aspell.sh"
-mkdir -p $(dirname $PROFILE_PATH)
-echo 'export PATH="$PATH:vendor/aspell/bin"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/aspell/lib"' >> $PROFILE_PATH
+# PROFILE_PATH="$BUILD_DIR/.profile.d/aspell.sh"
+# mkdir -p $(dirname $PROFILE_PATH)
+# echo 'export PATH="$PATH:vendor/aspell/bin"' >> $PROFILE_PATH
+# echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/aspell/lib"' >> $PROFILE_PATH
 
 exit 0
