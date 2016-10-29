@@ -17,8 +17,8 @@ echo "-----> CACHE_DIR: $CACHE_DIR"
 mv $CACHE_DIR/aspell-0.60.6.1/* $BUILD_DIR/vendor/aspell
 echo "-----> BUILD_DIR: $BUILD_DIR/vendor/aspell"
 $BUILD_DIR/vendor/aspell/configure
-$BUILD_DIR/vendor/aspell/make
-$BUILD_DIR/vendor/aspell/make install
+cd $BUILD_DIR/vendor/aspell && make
+cd $BUILD_DIR/vendor/aspell && make install
 # chmod +x ${BUILD_DIR}/vendor/aspell/bin/*
 
 # rm -rf ${CACHE_DIR}
