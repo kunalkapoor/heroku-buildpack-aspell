@@ -2,7 +2,7 @@
 
 set -e
 
-BUILD_DIR=$1
+BUILD_DIR=/app
 CACHE_DIR=$2/aspell
 
 mkdir -p $CACHE_DIR
@@ -29,10 +29,10 @@ echo "-----> Aspell installed"
 PROFILE_PATH="$BUILD_DIR/.profile.d/aspell.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:$BUILD_DIR/vendor/aspell/bin"' >> $PROFILE_PATH
-echo 'export LD_LIBRARY_PATH="$BUILD_DIR/vendor/aspell/lib"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$BUILD_DIR/vendor/aspell/lib:$LD_LIBRARY_PATH"' >> $PROFILE_PATH
 
-export PATH="$PATH:$BUILD_DIR/vendor/aspell/bin:$BUILD_DIR/vendor/aspell/lib"
-export LD_LIBRARY_PATH="$BUILD_DIR/vendor/aspell/lib"
+export PATH="$PATH:$BUILD_DIR/vendor/aspell/bin"
+export LD_LIBRARY_PATH="$BUILD_DIR/vendor/aspell/lib:$LD_LIBRARY_PATH"
 
 echo "-----> Installing dictionaries"
 DICT_URL="ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2016.06.26-0.tar.bz2"
