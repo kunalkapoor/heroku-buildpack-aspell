@@ -21,10 +21,10 @@ cd $BUILD_DIR/vendor/aspell && ./configure --prefix=$BUILD_DIR/vendor/aspell
 echo "-----> Running make"
 make -C $BUILD_DIR/vendor/aspell
 make install -C $BUILD_DIR/vendor/aspell
-chmod -R +rwx ${BUILD_DIR}/vendor/aspell
+chmod -R +rwx $BUILD_DIR/vendor/aspell
 echo "-----> Aspell installed"
 
-# rm -rf ${CACHE_DIR}
+# rm -rf $CACHE_DIR
 
 PROFILE_PATH="$BUILD_DIR/.profile.d/aspell.sh"
 mkdir -p $(dirname $PROFILE_PATH)
@@ -33,36 +33,36 @@ echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/vendor/aspell/lib"' >>
 
 export PATH="$PATH:$BUILD_DIR/vendor/aspell/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/vendor/aspell/lib"
-echo "-----> Path: $PATH"
 
+echo "-----> Installing dictionaries"
 DICT_URL="ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2016.06.26-0.tar.bz2"
-curl -L $DICT_URL -o ${CACHE_DIR}/dict-en.tar.gz
-tar -xf ${CACHE_DIR}/dict-en.tar.gz -C ${CACHE_DIR}
+curl -L $DICT_URL -o $CACHE_DIR/dict-en.tar.gz
+tar -xf ${CACHE_DIR/dict-en.tar.gz -C $CACHE_DIR
 mkdir -p $BUILD_DIR/vendor/aspell-en
-mv ${CACHE_DIR}/aspell6-en-2016.06.26-0/* $BUILD_DIR/vendor/aspell-en
-chmod -R +rwx ${BUILD_DIR}/vendor/aspell-en/
-${BUILD_DIR}/vendor/aspell-en/configure
-make -C ${BUILD_DIR}/vendor/aspell-en
-make install -C ${BUILD_DIR}/vendor/aspell-en
+mv $CACHE_DIR/aspell6-en-2016.06.26-0/* $BUILD_DIR/vendor/aspell-en
+chmod -R +rwx $BUILD_DIR/vendor/aspell-en/
+$BUILD_DIR/vendor/aspell-en/configure
+make -C $BUILD_DIR/vendor/aspell-en
+make install -C $BUILD_DIR/vendor/aspell-en
 
 DICT_URL="ftp://ftp.gnu.org/gnu/aspell/dict/nl/aspell-nl-0.50-2.tar.bz2"
-curl -L $DICT_URL -o ${CACHE_DIR}/dict-nl.tar.gz
-tar -xf ${CACHE_DIR}/dict-nl.tar.gz -C ${CACHE_DIR}
+curl -L $DICT_URL -o $CACHE_DIR/dict-nl.tar.gz
+tar -xf $CACHE_DIR/dict-nl.tar.gz -C $CACHE_DIR
 mkdir -p $BUILD_DIR/vendor/aspell-nl
-mv ${CACHE_DIR}/aspell-nl-0.50-2/* $BUILD_DIR/vendor/aspell-nl
-chmod -R +rwx ${BUILD_DIR}/vendor/aspell-nl
-${BUILD_DIR}/vendor/aspell-nl/configure
-make -C ${BUILD_DIR}/vendor/aspell-nl
-make install -C ${BUILD_DIR}/vendor/aspell-nl
+mv $CACHE_DIR/aspell-nl-0.50-2/* $BUILD_DIR/vendor/aspell-nl
+chmod -R +rwx $BUILD_DIR/vendor/aspell-nl
+$BUILD_DIR/vendor/aspell-nl/configure
+make -C $BUILD_DIR/vendor/aspell-nl
+make install -C $BUILD_DIR/vendor/aspell-nl
 
 DICT_URL="ftp://ftp.gnu.org/gnu/aspell/dict/el/aspell-el-0.50-3.tar.bz2"
-curl -L $DICT_URL -o ${CACHE_DIR}/dict-el.tar.gz
-tar -xf ${CACHE_DIR}/dict-el.tar.gz -C ${CACHE_DIR}
+curl -L $DICT_URL -o $CACHE_DIR/dict-el.tar.gz
+tar -xf $CACHE_DIR/dict-el.tar.gz -C $CACHE_DIR
 mkdir -p $BUILD_DIR/vendor/aspell-el
-mv ${CACHE_DIR}/aspell-el-0.50-3/* $BUILD_DIR/vendor/aspell-el
-chmod -R +rwx ${BUILD_DIR}/vendor/aspell-el
-${BUILD_DIR}/vendor/aspell-el/configure
-make -C ${BUILD_DIR}/vendor/aspell-el
-make install -C ${BUILD_DIR}/vendor/aspell-el
+mv $CACHE_DIR/aspell-el-0.50-3/* $BUILD_DIR/vendor/aspell-el
+chmod -R +rwx $BUILD_DIR/vendor/aspell-el
+$BUILD_DIR/vendor/aspell-el/configure
+make -C $BUILD_DIR/vendor/aspell-el
+make install -C $BUILD_DIR/vendor/aspell-el
 
 exit 0
