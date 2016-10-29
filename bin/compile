@@ -30,10 +30,10 @@ PROFILE_PATH="$BUILD_DIR/.profile.d/aspell.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:$BUILD_DIR/vendor/aspell/bin"' >> $PROFILE_PATH
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/vendor/aspell/lib"' >> $PROFILE_PATH
-echo "-----> Path: $PATH"
 
 export PATH="$PATH:vendor/aspell/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/aspell/lib"
+echo "-----> Path: $PATH"
 
 DICT_URL="ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2016.06.26-0.tar.bz2"
 curl -L $DICT_URL -o ${CACHE_DIR}/dict-en.tar.gz
