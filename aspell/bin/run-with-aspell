@@ -1,0 +1,4 @@
+#!/bin/sh
+PATH=/home/expertiza_developer/heroku-buildpack-aspell/aspell/lib/aspell-0.60:$PATH
+export PATH
+exec $@

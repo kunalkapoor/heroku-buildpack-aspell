@@ -17,11 +17,11 @@ echo "-----> CACHE_DIR: $CACHE_DIR"
 mv $CACHE_DIR/aspell-0.60.6.1/* $BUILD_DIR/vendor/aspell
 echo "-----> BUILD_DIR: $BUILD_DIR/vendor/aspell"
 chmod -R +rwx $BUILD_DIR/vendor/aspell
-cd $BUILD_DIR/vendor/aspell && ./configure
+cd $BUILD_DIR/vendor/aspell && ./configure --prefix=$BUILD_DIR/vendor/aspell
 echo "-----> Running make"
 make -C $BUILD_DIR/vendor/aspell
 make install -C $BUILD_DIR/vendor/aspell
-# chmod +x ${BUILD_DIR}/vendor/aspell/bin/*
+chmod -R +rwx ${BUILD_DIR}/vendor/aspell
 
 # rm -rf ${CACHE_DIR}
 
@@ -37,27 +37,27 @@ DICT_URL="ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2016.06.26-0.tar.bz2"
 curl -L $DICT_URL -o ${CACHE_DIR}/dict-en.tar.gz
 tar -xf ${CACHE_DIR}/dict-en.tar.gz -C ${CACHE_DIR}
 mv ${CACHE_DIR}/aspell6-en-2016.06.26-0/* $BUILD_DIR/vendor/aspell-en
-chmod +x ${BUILD_DIR}/vendor/aspell-en/*
+chmod -R +rwx ${BUILD_DIR}/vendor/aspell-en/
 ${BUILD_DIR}/vendor/aspell-en/configure
-${BUILD_DIR}/vendor/aspell-en/make
-${BUILD_DIR}/vendor/aspell-en/make install
+make -C ${BUILD_DIR}/vendor/aspell-en
+make install -C ${BUILD_DIR}/vendor/aspell-en
 
 DICT_URL="ftp://ftp.gnu.org/gnu/aspell/dict/nl/aspell-nl-0.50-2.tar.bz2"
 curl -L $DICT_URL -o ${CACHE_DIR}/dict-nl.tar.gz
 tar -xf ${CACHE_DIR}/dict-nl.tar.gz -C ${CACHE_DIR}
 mv ${CACHE_DIR}/aspell-nl-0.50-2/* $BUILD_DIR/vendor/aspell-nl
-chmod +x ${BUILD_DIR}/vendor/aspell-nl/*
+chmod -R +rwx ${BUILD_DIR}/vendor/aspell-nl
 ${BUILD_DIR}/vendor/aspell-nl/configure
-${BUILD_DIR}/vendor/aspell-nl/make
-${BUILD_DIR}/vendor/aspell-nl/make install
+make -C ${BUILD_DIR}/vendor/aspell-nl
+make install -C ${BUILD_DIR}/vendor/aspell-nl
 
 DICT_URL="ftp://ftp.gnu.org/gnu/aspell/dict/el/aspell-el-0.50-3.tar.bz2"
 curl -L $DICT_URL -o ${CACHE_DIR}/dict-el.tar.gz
 tar -xf ${CACHE_DIR}/dict-el.tar.gz -C ${CACHE_DIR}
 mv ${CACHE_DIR}/aspell-el-0.50-3/* $BUILD_DIR/vendor/aspell-el
-chmod +x ${BUILD_DIR}/vendor/aspell-el/*
+chmod -R +rwx ${BUILD_DIR}/vendor/aspell-el
 ${BUILD_DIR}/vendor/aspell-el/configure
-${BUILD_DIR}/vendor/aspell-el/make
-${BUILD_DIR}/vendor/aspell-el/make install
+make -C ${BUILD_DIR}/vendor/aspell-el
+make install -C ${BUILD_DIR}/vendor/aspell-el
 
 exit 0
