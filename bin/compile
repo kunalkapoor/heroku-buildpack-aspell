@@ -22,6 +22,8 @@ echo "-----> Running make"
 make -C $BUILD_DIR/vendor/aspell
 make install -C $BUILD_DIR/vendor/aspell
 chmod -R +rwx ${BUILD_DIR}/vendor/aspell
+echo "-----> Aspell installed"
+ls -l $BUILD_DIR/vendor/aspell/bin
 
 # rm -rf ${CACHE_DIR}
 
