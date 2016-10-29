@@ -68,5 +68,5 @@ make install -C $BUILD_DIR/vendor/aspell-el > /dev/null
 chmod -R +rwx $BUILD_DIR/vendor/aspell
 
 echo "-----> Dictionaries installed"
-echo "LD_LIBRARY_PATH= $LD_LIBRARY_PATH"
+ls -l $LD_LIBRARY_PATH
 exit 0
