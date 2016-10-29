@@ -3,7 +3,7 @@
 set -e
 
 BUILD_DIR=$1
-CACHE_DIR={$2}/aspell
+CACHE_DIR=$2/aspell
 
 mkdir -p $CACHE_DIR
 mkdir -p $BUILD_DIR/vendor
@@ -12,9 +12,9 @@ mkdir -p $BUILD_DIR/vendor/aspell
 echo "-----> Install Aspell package"
 ASPELL_URL="ftp://ftp.gnu.org/gnu/aspell/aspell-0.60.6.1.tar.gz"
 curl -L $ASPELL_URL -o ${CACHE_DIR}/aspell.tar.gz
-tar -xvf ${CACHE_DIR}/aspell.tar.gz -C ${CACHE_DIR}
-ls ${CACHE_DIR}
+tar -xf ${CACHE_DIR}/aspell.tar.gz -C ${CACHE_DIR}
 echo "-----> CACHE_DIR: $CACHE_DIR"
+ls ${CACHE_DIR}
 mv ${CACHE_DIR}/aspell-0.60.6.1 $BUILD_DIR/vendor/aspell
 echo "-----> BUILD_DIR: $BUILD_DIR/vendor/aspell"
 chmod +x ${BUILD_DIR}/vendor/aspell/bin/*
